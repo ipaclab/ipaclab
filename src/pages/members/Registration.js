@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid,  Typography } from "@mui/material"
+import { Box, Button, Container, Grid,  Typography, Link } from "@mui/material"
 import BulletList from "../../components/BulletList";
 import PageTitle from "../../components/PageTitle";
 
@@ -25,9 +25,20 @@ const Registration = () => {
   ];
 
   const contact_detail = [
-    'Supervisor: Dr. Hoang Duc Chinh',
+    <span key="supervisor">
+      Supervisor:{" "}
+      <Link
+        href="https://seee.hust.edu.vn/vi/suborgans/person/Khoa-Tu-dong-hoa-5/TS-Hoang-Duc-Chinh-57/" // <-- Replace with actual profile URL
+        underline="hover"
+        color="primary"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Dr. Hoang Duc Chinh
+      </Link>
+    </span>,
     'Email: chinh.hoangduc@hust.edu.vn',
-    'HUST Webpage: https://seee.hust.edu.vn/hoangducchinh'
+    'Facebook Page: Under construction'
   ];
 
   return (
@@ -44,7 +55,10 @@ const Registration = () => {
         <PageTitle title='Application' header='MEMBER' />
         <Box sx={{paddingTop: {xs: '64px', md: '80px'}}} />
         <Typography variant='h6' fontSize='18px' my={2} fontWeight='normal' style={{ color: 'gray'}} lineHeight={1.5}>
-        At IPAC lab, we are dedicated to fostering an inclusive and collaborative environment where diverse perspectives and expertise come together to drive groundbreaking research and innovation. We welcome applications from individuals of all backgrounds and encourage those who require accommodations to reach out to us so we can support their needs. Join us in our mission to push the boundaries of knowledge and create impactful solutions for the future.
+        At IPAC lab, we are dedicated to fostering an inclusive and collaborative environment where diverse perspectives
+        and expertise come together to drive groundbreaking research and innovation. We welcome applications from 
+        individuals of all backgrounds and encourage those who require accommodations to reach out to us so we can support 
+        their needs. Join us in our mission to push the boundaries of knowledge and create impactful solutions for the future.
         </Typography>
         <BulletList title='Research Interests' points={research_areas} />
         <BulletList title='Requirements' points={requirements} />

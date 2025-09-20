@@ -2,129 +2,30 @@ import * as React from 'react';
 import { Box, Container, Divider, Grid, Stack, Typography } from '@mui/material';
 import PageTitle from '../../components/PageTitle';
 import MemberCard from './MemberCard';
+import { Members, sortedMemberData } from './MemberData';
 import { navigateTo } from '../../components/navigateTo';
 import { useNavigate } from 'react-router-dom';
 import RegistrationButton from './RegistrationButton';
 
 export default function MembersPublic() {
   const navigate = useNavigate();
-  const [memberData, setMemberData] = React.useState({alumni: [], supervisor: [], member: []})
+  const [memberData, setMemberData] = React.useState({
+    alumni: [], 
+    supervisor: [], 
+    smart_farm: [], 
+    agv: [], 
+    smart_biogas: [],
+    ev_charging: [],
+    inventory: [],
+    target_tracking: [],
+    collaborators: [],
+  })
   const [alumni, setAlumni] = React.useState(0);
   const [supervisor, setSupervisor] = React.useState(0);
   const [activeMember, setActiveMember] = React.useState(0);
 
-  const members = [
-    {
-      id: 1,
-      name: 'Tran Quang Anh',
-      course: 66,
-      position: 'Member',
-      research_topic: 'Smart farm',
-      image: 'https://picsum.photos/300/400',
-    },
-    {
-      id: 2,
-      name: 'Pham Huy Tuyen',
-      course: 66,
-      position: 'Member',
-      research_topic: 'Smart farm',
-      image: 'https://picsum.photos/303/404',
-    },
-    {
-      id: 3,
-      name: 'Phan Duc Manh',
-      course: 65,
-      position: 'Alumni',
-      research_topic: 'Smart farm',
-      image: 'https://picsum.photos/306/408',
-    },
-    {
-      id: 4,
-      name: 'Tran Son',
-      course: 65,
-      position: 'Member',
-      research_topic: 'Smart farm',
-      image: 'https://picsum.photos/309/412',
-    },
-    {
-      id: 5,
-      name: 'Do Tien Hai',
-      course: 64,
-      position: 'Alumni',
-      research_topic: 'Smart farm',
-      image: 'https://picsum.photos/312/416',
-    },
-    {
-      id: 6,
-      name: 'Do Tien Dung',
-      course: 65,
-      position: 'Alumni',
-      research_topic: 'Smart biogas',
-      image: 'https://picsum.photos/300/400',
-    },
-    {
-      id: 7,
-      name: 'Dr. Hoang Duc Chinh',
-      course: 48,
-      position: 'Supervisor',
-      research_topic: 'Department of Automation',
-      image: 'https://picsum.photos/303/404',
-    },
-    {
-      id: 8,
-      name: 'Tran Phuong Du',
-      course: 66,
-      position: 'Member',
-      research_topic: 'Smart farm',
-      image: 'https://picsum.photos/306/408',
-    },
-    {
-      id: 9,
-      name: 'Nguyen Duc Minh',
-      course: 67,
-      position: 'Member',
-      research_topic: 'AGV',
-      image: 'https://picsum.photos/309/412',
-    }
-  ]
-
-  const sortedMemberData = (members) => {
-    let result = {
-      alumni: [],
-      supervisor: [],
-      member: []
-    };
-
-    let alumni_count = 0;
-    let member_count = 0;
-    let supervisor_count = 0;
-
-    members.forEach(member => {
-      // Check position for Alumni
-      if (member.position.toLowerCase() === 'alumni') {
-				result.alumni.push(member);
-				alumni_count++;
-      }
-      // Check position for Supervisor
-      else if (member.position.toLowerCase() === 'supervisor') {
-				result.supervisor.push(member);
-				supervisor_count++;
-      }
-      else {
-				result.member.push(member);
-				member_count++;
-      }
-    });
-
-    setAlumni(alumni_count);
-    setActiveMember(member_count);
-    setSupervisor(supervisor_count);
-    
-    return result;
-  }
-
   React.useEffect(() => {
-    setMemberData(sortedMemberData(members));
+    setMemberData(sortedMemberData(Members, setAlumni, setActiveMember, setSupervisor));
   }, [])
 
   return (
@@ -173,6 +74,7 @@ export default function MembersPublic() {
 				</Container>
         <Box my={10}/>
 				{/* Member card */}
+        {/* Supervisors */}
         <Typography variant='h4' textAlign='center' my={4}>Supervisor</Typography>
         <Grid container spacing={4} justifyContent='center'>
           {memberData.supervisor.map((member) => (
@@ -180,13 +82,70 @@ export default function MembersPublic() {
           ))}
         </Grid>
         <Box sx={{paddingTop: {xs: '64px', md: '80px'}}} />
-        <Typography variant='h4' textAlign='center' my={4}>Current members</Typography>
+
+        {/* Supervisors */}
+        <Typography variant='h4' textAlign='center' my={4}>Collaborators</Typography>
         <Grid container spacing={4} justifyContent='center'>
-          {memberData.member.map((member) => (
+          {memberData.collaborators.map((member) => (
+            <MemberCard member={member} fitMode='contain' aspectRatio='1.5/1' />
+          ))}
+        </Grid>
+        <Box sx={{paddingTop: {xs: '64px', md: '80px'}}} />
+
+        {/* Wireless Sensor and Actuator Networks */}
+        <Typography variant='h4' textAlign='center' my={4}>Wireless Sensor and Actuator Networks</Typography>
+        <Grid container spacing={4} justifyContent='center'>
+          {memberData.smart_farm.map((member) => (
             <MemberCard member={member} />
           ))}
         </Grid>
         <Box sx={{paddingTop: {xs: '64px', md: '80px'}}} />
+
+        {/* AGV */}
+        <Typography variant='h4' textAlign='center' my={4}>Automated Guided Vehicles</Typography>
+        <Grid container spacing={4} justifyContent='center'>
+          {memberData.agv.map((member) => (
+            <MemberCard member={member} />
+          ))}
+        </Grid>
+        <Box sx={{paddingTop: {xs: '64px', md: '80px'}}} />
+
+        {/* Smart biogas */}
+        <Typography variant='h4' textAlign='center' my={4}>Smart biogas monitoring system</Typography>
+        <Grid container spacing={4} justifyContent='center'>
+          {memberData.smart_biogas.map((member) => (
+            <MemberCard member={member} />
+          ))}
+        </Grid>
+        <Box sx={{paddingTop: {xs: '64px', md: '80px'}}} />
+
+        {/* EV Charging */}
+        <Typography variant='h4' textAlign='center' my={4}>EV Charging Station Management System</Typography>
+        <Grid container spacing={4} justifyContent='center'>
+          {memberData.ev_charging.map((member) => (
+            <MemberCard member={member} />
+          ))}
+        </Grid>
+        <Box sx={{paddingTop: {xs: '64px', md: '80px'}}} />
+
+        {/* Inventory */}
+        <Typography variant='h4' textAlign='center' my={4}>Smart Inventory Management System</Typography>
+        <Grid container spacing={4} justifyContent='center'>
+          {memberData.inventory.map((member) => (
+            <MemberCard member={member} />
+          ))}
+        </Grid>
+        <Box sx={{paddingTop: {xs: '64px', md: '80px'}}} />
+
+        {/* Target tracking */}
+        <Typography variant='h4' textAlign='center' my={4}>Target tracking</Typography>
+        <Grid container spacing={4} justifyContent='center'>
+          {memberData.target_tracking.map((member) => (
+            <MemberCard member={member} />
+          ))}
+        </Grid>
+        <Box sx={{paddingTop: {xs: '64px', md: '80px'}}} />
+
         <Typography variant='h4' textAlign='center' my={4}>Alumni</Typography>
         <Grid container spacing={4} justifyContent='center'>
           {memberData.alumni.map((member) => (
@@ -194,6 +153,7 @@ export default function MembersPublic() {
           ))}
         </Grid>
         <Box sx={{paddingTop: {xs: '64px', md: '80px'}}} />
+
       </Container>
     </main>
   );

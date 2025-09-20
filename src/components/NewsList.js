@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Typography, Grid, Button, List } from '@mui/material';
+import { Box, Typography, Grid, Button, List, Link } from '@mui/material';
 import NewsItem from './NewsItem';
 import PostTitle from './PostTitle';
 
@@ -15,6 +15,9 @@ export default function NewsList({ title, abstract, type, numberOfPosts, posts})
       <PostTitle title={title} abstract={abstract} />
       <Box my={8} />
       <Typography variant='h6' my={1} fontSize='12px' style={{ color: 'gray' }}>{`${numberOfPosts} ${typeLabel(type)}`}</Typography>
+      {(type === 'publication') ? <Typography fontStyle={'italic'}>
+        For more information, please visit <Link href="https://scholar.google.com.sg/citations?hl=en&user=mI561CkAAAAJ&view_op=list_works&sortby=pubdate">supervisor profile.</Link>
+      </Typography> : <></>}
       <List>
         {posts.map((article) => (
           <NewsItem post={article} />

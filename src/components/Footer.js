@@ -91,9 +91,11 @@ function Footer(props) {
               <Typography variant="h6" align="left" >
                 Follow
               </Typography>
-              <IconButton size='large' sx={{ color: 'black'}}>
-                <FacebookIcon fontSize='inherit' />
-              </IconButton>
+              <a href="https://www.facebook.com/profile.php?id=61578998590043" target="_blank" rel="fb lab">
+                <IconButton size="large" sx={{ color: 'black' }}>
+                  <FacebookIcon fontSize="inherit" />
+                </IconButton>
+              </a>
               <IconButton size='large' sx={{ color: 'black'}}>
                 <XIcon fontSize='inherit' />
               </IconButton>
@@ -131,9 +133,9 @@ function Footer(props) {
                   <ListItem disableGutters> 
                     <NavButton title='Activities' path='/activities' />
                   </ListItem>
-                  <ListItem disableGutters>
+                  {/* <ListItem disableGutters>
                     <NavButton title='Technologies' path='/technology' />
-                  </ListItem>
+                  </ListItem> */}
                 </Collapse>
               </List>
               <Divider sx={{
@@ -173,9 +175,14 @@ function Footer(props) {
             </Grid>
             <Grid item xs={12} md={5}>
               <Typography fontSize='18px' pt={2} pb={1} variant='h6'>Contact us</Typography>
-              <Typography variant='h6' py={1} fontSize='16px'>Dr. Hoang Duc Chinh</Typography>
-              <Typography variant='h6' py={1} fontSize='16px'>Tel: 0987654321</Typography>
-              <Typography variant='h6' py={1} fontSize='16px'>Gmail: chinh.hoangduc@hust.edu.vn</Typography>
+              <Typography 
+                component="a" 
+                href="https://seee.hust.edu.vn/vi/suborgans/person/Khoa-Tu-dong-hoa-5/TS-Hoang-Duc-Chinh-57/" 
+                variant='h6' py={1} fontSize='16px'
+              >
+                Dr. Hoang Duc Chinh
+              </Typography>
+              <Typography variant='h6' py={1} fontSize='16px'>Email: chinh.hoangduc@hust.edu.vn</Typography>
             </Grid>
           </Grid>
           <Grid item my={3} xs={12}>
