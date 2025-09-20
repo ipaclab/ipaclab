@@ -148,7 +148,7 @@ const ConditionalRoutes = () => {
       <Container maxWidth={checkException(noHeaderFooter, location.pathname) ? 'xl' : '2000px'} style={{padding: 0}}> 
         <ConditionalHeaderFooter title="IPAC Lab" sections={sections} urlPath={location.pathname}>
           <Routes>
-            <Route path="/preview-ipac-lab-web" element={<Blog />} />
+            <Route path="/ipaclab" element={<Blog />} />
             <Route path="" element={<Blog />} />
             <Route path="/about" element={<About />} />
             <Route path="/technology" element={<TechnologyPublic />} />
@@ -170,7 +170,7 @@ const ConditionalRoutes = () => {
 
 function App() {
   return (
-    <Router basename='/preview-ipac-lab-web'>
+    <Router basename='/ipaclab'>
       <ConditionalRoutes />
     </Router>
   );
