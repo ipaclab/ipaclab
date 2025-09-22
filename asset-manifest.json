@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/ipaclab/static/css/main.303d0bbc.css",
+    "main.js": "/ipaclab/static/js/main.0113b7ce.js",
+    "static/media/logo_lab.png": "/ipaclab/static/media/logo_lab.08424fbfc89fa783b6bb.png",
+    "static/media/MoCAR_lab_logo.png": "/ipaclab/static/media/MoCAR_lab_logo.5d3766ed83cc8648610a.png",
+    "static/media/dr_hoang_duc_chinh.jpg": "/ipaclab/static/media/dr_hoang_duc_chinh.4326a5a276edbe01bc0a.jpg",
+    "static/media/EVSE_lab_logo.jpg": "/ipaclab/static/media/EVSE_lab_logo.3d363edbf146862479d4.jpg",
+    "static/media/EE_Lab_logo.jpg": "/ipaclab/static/media/EE_Lab_logo.2ede32e462b07e6e4e2d.jpg",
+    "index.html": "/ipaclab/index.html",
+    "static/media/Square_gray.svg": "/ipaclab/static/media/Square_gray.9281a4f4a24a608d883cbade33e51590.svg",
+    "main.303d0bbc.css.map": "/ipaclab/static/css/main.303d0bbc.css.map",
+    "main.0113b7ce.js.map": "/ipaclab/static/js/main.0113b7ce.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.303d0bbc.css",
+    "static/js/main.0113b7ce.js"
+  ]
+}
